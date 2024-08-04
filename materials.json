@@ -1,0 +1,62 @@
+[
+  {
+    "model": "materials.lesson",
+    "pk": 1,
+    "fields": {
+      "name": "урок1",
+      "description": "урок1 ок",
+      "pre_view": "",
+      "video_url": null,
+      "course": 1
+    }
+  },
+  {
+    "model": "materials.lesson",
+    "pk": 2,
+    "fields": {
+      "name": "урок2",
+      "description": "урок2 ок",
+      "pre_view": "",
+      "video_url": null,
+      "course": 1
+    }
+  },
+  {
+    "model": "materials.lesson",
+    "pk": 3,
+    "fields": {
+      "name": "урок3",
+      "description": "урок3 ок",
+      "pre_view": "",
+      "video_url": null,
+      "course": 3
+    }
+  },
+  {
+    "model": "materials.course",
+    "pk": 1,
+    "fields": {
+      "name": "курс1",
+      "description": "курс1 ок1",
+      "pre_view": ""
+    }
+  },
+  {
+    "model": "materials.course",
+    "pk": 2,
+    "fields": {
+      "name": "курс2",
+      "description": "курс2 ок",
+      "pre_view": ""
+    }
+  },
+  {
+    "model": "materials.course",
+    "pk": 3,
+    "fields": {
+      "name": "курс3",
+      "description": "курс3 ок",
+      "pre_view": ""
+    }
+  }
+]
