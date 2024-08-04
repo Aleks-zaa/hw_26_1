@@ -8,7 +8,7 @@ from django_filters.rest_framework import DjangoFilterBackend, FilterSet
 from materials.models import Course
 from users.models import User, Payment
 from users.serializers import UserSerializer, CreateUserSerializer, PaymentSerializer
-from users.services import create_stripe_price, create_stripe_session
+from users.services import create_stripe_price, create_stripe_session, create_stripe_product
 
 
 class UserRegisterView(generics.CreateAPIView):
@@ -62,9 +62,10 @@ class PaymentCreateAPIView(generics.CreateAPIView):
 
     def perform_create(self, serializer):
         payment = serializer.save(user=self.request.user)
-        price = create_stripe_price(payment.payment_sum)
+        product_id = create_stripe_product(payment)
+        price = create_stripe_price(product_id, payment)
         session_id, payment_link = create_stripe_session(price)
-
         payment.session_id = session_id
         payment.link = payment_link
         payment.save()
+
