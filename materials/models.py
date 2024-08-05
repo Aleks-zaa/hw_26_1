@@ -1,6 +1,5 @@
 from django.db import models
 
-import users
 from config import settings
 
 NULLABLE = {'null': True, 'blank': True}
@@ -40,7 +39,8 @@ class Course(models.Model):
 
 
 class Subscription(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='пользователь', on_delete=models.CASCADE, **NULLABLE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='пользователь', on_delete=models.CASCADE,
+                             **NULLABLE)
     course = models.ForeignKey(Course, verbose_name='курс в подписке', on_delete=models.CASCADE)
 
     def __str__(self):

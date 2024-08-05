@@ -1,5 +1,5 @@
-from rest_framework.generics import get_object_or_404
 from rest_framework import generics
+from rest_framework.generics import get_object_or_404
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -8,7 +8,7 @@ from rest_framework.viewsets import ModelViewSet
 from materials.models import Course, Lesson, Subscription
 from materials.paginators import CoursePaginator, LessonPaginator
 from materials.permissions import Owner, Staff
-from materials.serializers import CourseSerializer, LessonSerializer, CourseDetailSerializer, SubscriptionSerializer
+from materials.serializers import CourseSerializer, LessonSerializer, SubscriptionSerializer
 
 
 class CourseViewSet(ModelViewSet):
@@ -24,17 +24,6 @@ class CourseViewSet(ModelViewSet):
         elif self.action == "destroy":
             self.permission_classes = (~Staff | Owner,)
         return super().get_permissions()
-
-    # def get_queryset(self):
-    #     if not self.request.user.is_staff:
-    #         return Course.objects.filter(owner=self.request.user)
-    #     elif self.request.user.is_staff:
-    #         return Course.objects.all()
-
-    # def get_serializer_class(self):
-    #     if self.action == "retrieve":
-    #         return CourseDetailSerializer
-    #     return CourseSerializer
 
 
 class LessonCreateAPIView(generics.CreateAPIView):

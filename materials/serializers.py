@@ -1,5 +1,5 @@
 from rest_framework.fields import SerializerMethodField
-from rest_framework.serializers import ModelSerializer, CharField
+from rest_framework.serializers import ModelSerializer
 
 from materials.models import Course, Lesson, Subscription
 from materials.validators import UrlValidator
@@ -24,9 +24,6 @@ class CourseDetailSerializer(ModelSerializer):
     # lesson_list = SerializerMethodField()
     lesson_set = LessonSerializer(many=True)
 
-    # def get_lesson_list(self, course):
-    #     return [lesson.name for lesson in Lesson.objects.filter(course=course)]
-
     def get_lesson_in_course(self, course):
         return Lesson.objects.filter(course=course).count()
 
@@ -36,7 +33,6 @@ class CourseDetailSerializer(ModelSerializer):
 
 
 class SubscriptionSerializer(ModelSerializer):
-
     class Meta:
         model = Subscription
         fields = '__all__'
